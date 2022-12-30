@@ -15,8 +15,59 @@ body {
   background-size: cover;
   background-repeat: no-repeat;
   height: 100vh;
+  font-family: sans-serif;
+}
+
+#header {
+  display: flex;
+  align-items: center;
+  background-color: rgba(248, 246, 246, 0.459);
+}
+
+.header-left {
+  display: flex;
+  width: 65%;
+  margin: 1rem;
+  padding: 0.5rem;
+  align-items: center;
+  justify-content: center;
 }
 
 .weather-icon {
-  height: 64px;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
+.weather-icon.large {
+  width: 80px;
+  height: 80px;
+}
+
+.weather-current-temp {
+  font-size: 2rem;
+  margin-left: 1rem;
+}
+
+.header-right {
+  display: grid;
+  width: 35%;
+  grid-template-columns: repeat(3, auto);
+  grid-template-rows: repeat(2, auto);
+  gap: 10px;
+}
+
+.info-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.label {
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.value-sub-info {
+  font-weight: lighter;
 }
