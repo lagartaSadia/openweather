@@ -1,0 +1,22 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(
+      rgba(247, 227, 223, 0.192),
+      rgba(80, 40, 30, 0.6),
+      rgba(29, 7, 1, 0.6)
+    ),
+    url(./forrest-background.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+}
+
+.weather-icon {
+  height: 64px;
+}

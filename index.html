@@ -6,9 +6,61 @@
     <title>Vite App</title>
   </head>
   <body>
-    <div id="app">
-      
-    </div>
+    <header id="header">
+      <div class="header-left">
+        <img
+          src="./icons/cloud-bolt.svg"
+          alt="clout bolt"
+          class="weather-icon large"
+          data-current-icon
+        />
+        <p>32 <span data-current-temp>&deg;</span></p>
+      </div>
+      <div class="header-right">
+        <div class="info-group">
+          <div class="label">high</div>
+          <div>
+            <span data-curren-high>34</span
+            ><span class="value-sub-info">&deg;</span>
+          </div>
+        </div>
+        <div class="info-group">
+          <div class="label">fl high</div>
+          <div>
+            <span data-curren-fl-high>28</span
+            ><span class="value-sub-info">&deg;</span>
+          </div>
+        </div>
+        <div class="info-group">
+          <div class="label">wind</div>
+          <div>
+            <span data-curren-wind>12</span
+            ><span class="value-sub-info">km</span>
+          </div>
+        </div>
+        <div class="info-group">
+          <div class="label">low</div>
+          <div>
+            <span data-curren-low>24</span
+            ><span class="value-sub-info">&deg;</span>
+          </div>
+        </div>
+        <div class="info-group">
+          <div class="label">fl low</div>
+          <div>
+            <span data-curren-fl-low>20</span
+            ><span class="value-sub-info">&deg;</span>
+          </div>
+        </div>
+        <div class="info-group">
+          <div class="label">precip</div>
+          <div>
+            <span data-curren-precip>0.2</span
+            ><span class="value-sub-info">cm</span>
+          </div>
+        </div>
+      </div>
+    </header>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
