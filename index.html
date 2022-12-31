@@ -9,7 +9,7 @@
     <header id="header">
       <div class="header-left">
         <img
-          src="./icons/cloud-bolt.svg"
+          src="./icons/sun.svg"
           alt="clout bolt"
           class="weather-icon large"
           data-current-icon
@@ -53,6 +53,17 @@
         </div>
       </div>
     </header>
+    <aside class="search">
+      <input
+        type="text"
+        id="city-name"
+        aria-label="Input city name here to search"
+        placeholder="City name..."
+      />
+      <button type="submit" id="search-button" aria-label="Submit button">
+        <img src="./icons/search.svg" alt="Search icon button" />
+      </button>
+    </aside>
     <script type="module" src="/main.js"></script>
   </body>
 </html>
