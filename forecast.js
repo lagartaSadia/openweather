@@ -2,38 +2,25 @@ const API_KEY = "a698168853c8d391d9f68e0e0b8f5b58";
 const searchButton = document.getElementById("search-button");
 
 searchButton.addEventListener("click", () => {
-  let cityName = document.getElementById("city-name").value;
+  let userEntry = document.getElementById("city-name");
+  const data = userEntry.value.toUpperCase().split(", ");
 
-  geolocation(cityName);
+  forecast(data[0], data[1]);
+  userEntry.value = "";
 });
 
-function geolocation(cityName) {
+function forecast(cityName, country) {
   fetch(
-    `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=5&appid=${API_KEY}`
+    `https://api.openweathermap.org/data/2.5/weather?q=${cityName},${country}&appid=${API_KEY}`
   )
     .then((res) => {
       return res.json();
     })
-    .then((data) => {
-      const cities = data.filter((city) => city.name == cityName);
-      if (cities.length == 0) console.log("City not found!");
-      else forecast(cities);
+    .then((weather) => {
+      if (weather.length == 0) console.log("City not found!");
+      else console.log(weather);
     })
     .catch((err) => {
       console.log(err);
     });
-}
-
-function forecast(cities) {
-  cities.forEach((city) => {
-    fetch(
-      `https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&appid=${API_KEY}`
-    )
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        console.log(data);
-      });
-  });
 }
