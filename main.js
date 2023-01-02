@@ -1,3 +1,2 @@
-import forecast from "./forecast";
+import "./forecast";
 import "./style.css";
-forecast();
