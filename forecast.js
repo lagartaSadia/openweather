@@ -1,4 +1,5 @@
-const API_KEY = "a698168853c8d391d9f68e0e0b8f5b58";
+const API_KEY_FORECAST = "a698168853c8d391d9f68e0e0b8f5b58";
+const API_KEY_GIPHY = "X5BgOScTCzcvxmj68huYhrP7jwGurgb6";
 const searchButton = document.getElementById("search-button");
 
 searchButton.addEventListener("click", () => {
@@ -11,7 +12,7 @@ searchButton.addEventListener("click", () => {
 
 function forecast(cityName, country) {
   fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${cityName},${country}&units=metric&appid=${API_KEY}`
+    `https://api.openweathermap.org/data/2.5/forecast?q=${cityName},${country}&units=metric&cnt=7&appid=${API_KEY_FORECAST}`
   )
     .then((res) => {
       return res.json();
@@ -20,7 +21,7 @@ function forecast(cityName, country) {
       if (weather.cod == "404") alert(weather.message);
       else {
         console.log(weather);
-        populateTemplate(weather);
+        getGif(weather);
       }
     })
     .catch((err) => {
@@ -28,15 +29,17 @@ function forecast(cityName, country) {
     });
 }
 
-function populateTemplate(weather) {
-  const weekWeather = document.querySelector(".week-weather");
-
-  const template = document.getElementsByTagName("template");
-  const cardDay = document.querySelector("[data-day]");
-  const cardDayTemp = document.querySelector("[data-day-temp]");
-
-  const day = weather["list"][0]["dt-txt"];
-  console.log(
-    new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(day)
-  );
+function getGif(weather) {
+  fetch(
+    `https://api.giphy.com/v1/gifs/translate?s=${weather["list"][0]["weather"]["main"]}&api_key=${API_KEY_GIPHY}`
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .then((data) => {
+      console.log(data);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 }
