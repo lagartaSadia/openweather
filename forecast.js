@@ -30,14 +30,17 @@ function forecast(cityName, country) {
 }
 
 function getGif(weather) {
+  const weatherNow = weather["list"][0]["weather"][0]["main"];
+  const iconHeader = document.getElementById("icon-header");
   fetch(
-    `https://api.giphy.com/v1/gifs/translate?s=${weather["list"][0]["weather"]["main"]}&api_key=${API_KEY_GIPHY}`
+    `https://api.giphy.com/v1/gifs/translate?s=${weatherNow}&api_key=${API_KEY_GIPHY}`
   )
     .then((res) => {
       return res.json();
     })
-    .then((data) => {
-      console.log(data);
+    .then((gif) => {
+      console.log(gif);
+      iconHeader.src = gif["data"]["images"]["original"]["url"];
     })
     .catch((err) => {
       console.log(err);
