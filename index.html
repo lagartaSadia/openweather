@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite App</title>
+    <title>Forecast</title>
   </head>
   <body>
     <header id="header">
@@ -65,54 +65,57 @@
       </button>
     </aside>
 
-    <main class="week-weather">
-      <div class="card-weather">
-        <img class="weather-icon" src="./icons/sun.svg" />
-        <div class="card-info">
-          <p class="card-day">Monday</p>
-          <p class="card-temp">25&deg;</p>
+    <main class="forecast">
+      <h2 class="city">London</h2>
+      <div class="week-weather">
+        <div class="card-weather">
+          <img class="weather-icon" src="./icons/sun.svg" />
+          <div class="card-info">
+            <p class="card-day">Monday</p>
+            <p class="card-temp">25&deg;</p>
+          </div>
         </div>
-      </div>
-      <div class="card-weather">
-        <img class="weather-icon" src="./icons/sun.svg" />
-        <div class="card-info">
-          <p class="card-day">Thusday</p>
-          <p class="card-temp">25&deg;</p>
+        <div class="card-weather">
+          <img class="weather-icon" src="./icons/sun.svg" />
+          <div class="card-info">
+            <p class="card-day">Thusday</p>
+            <p class="card-temp">25&deg;</p>
+          </div>
         </div>
-      </div>
-      <div class="card-weather">
-        <img class="weather-icon" src="./icons/sun.svg" />
-        <div class="card-info">
-          <p class="card-day">Wednesday</p>
-          <p class="card-temp">25&deg;</p>
+        <div class="card-weather">
+          <img class="weather-icon" src="./icons/sun.svg" />
+          <div class="card-info">
+            <p class="card-day">Wednesday</p>
+            <p class="card-temp">25&deg;</p>
+          </div>
         </div>
-      </div>
-      <div class="card-weather">
-        <img class="weather-icon" src="./icons/sun.svg" />
-        <div class="card-info">
-          <p class="card-day">Thursday</p>
-          <p class="card-temp">25&deg;</p>
+        <div class="card-weather">
+          <img class="weather-icon" src="./icons/sun.svg" />
+          <div class="card-info">
+            <p class="card-day">Thursday</p>
+            <p class="card-temp">25&deg;</p>
+          </div>
         </div>
-      </div>
-      <div class="card-weather">
-        <img class="weather-icon" src="./icons/sun.svg" />
-        <div class="card-info">
-          <p class="card-day">Friday</p>
-          <p class="card-temp">25&deg;</p>
+        <div class="card-weather">
+          <img class="weather-icon" src="./icons/sun.svg" />
+          <div class="card-info">
+            <p class="card-day">Friday</p>
+            <p class="card-temp">25&deg;</p>
+          </div>
         </div>
-      </div>
-      <div class="card-weather">
-        <img class="weather-icon" src="./icons/sun.svg" />
-        <div class="card-info">
-          <p class="card-day">Saturday</p>
-          <p class="card-temp">25&deg;</p>
+        <div class="card-weather">
+          <img class="weather-icon" src="./icons/sun.svg" />
+          <div class="card-info">
+            <p class="card-day">Saturday</p>
+            <p class="card-temp">25&deg;</p>
+          </div>
         </div>
-      </div>
-      <div class="card-weather">
-        <img class="weather-icon" src="./icons/sun.svg" />
-        <div class="card-info">
-          <p class="card-day">Sunday</p>
-          <p class="card-temp">25&deg;</p>
+        <div class="card-weather">
+          <img class="weather-icon" src="./icons/sun.svg" />
+          <div class="card-info">
+            <p class="card-day">Sunday</p>
+            <p class="card-temp">25&deg;</p>
+          </div>
         </div>
       </div>
     </main>
@@ -121,8 +124,8 @@
       <div class="card-weather">
         <img class="weather-icon" src="./icons/sun.svg" />
         <div class="card-info">
-          <p class="card-day">Monday</p>
-          <p class="card-temp">25&deg;</p>
+          <p class="card-day" data-day></p>
+          <p class="card-temp"><span data-day-temp></span>&deg;</p>
         </div>
       </div>
     </template>

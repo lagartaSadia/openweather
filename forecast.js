@@ -11,16 +11,32 @@ searchButton.addEventListener("click", () => {
 
 function forecast(cityName, country) {
   fetch(
-    `https://api.openweathermap.org/data/2.5/weather?q=${cityName},${country}&appid=${API_KEY}`
+    `https://api.openweathermap.org/data/2.5/forecast?q=${cityName},${country}&units=metric&appid=${API_KEY}`
   )
     .then((res) => {
       return res.json();
     })
     .then((weather) => {
-      if (weather.length == 0) console.log("City not found!");
-      else console.log(weather);
+      if (weather.cod == "404") alert(weather.message);
+      else {
+        console.log(weather);
+        populateTemplate(weather);
+      }
     })
     .catch((err) => {
       console.log(err);
     });
+}
+
+function populateTemplate(weather) {
+  const weekWeather = document.querySelector(".week-weather");
+
+  const template = document.getElementsByTagName("template");
+  const cardDay = document.querySelector("[data-day]");
+  const cardDayTemp = document.querySelector("[data-day-temp]");
+
+  const day = weather["list"][0]["dt-txt"];
+  console.log(
+    new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(day)
+  );
 }

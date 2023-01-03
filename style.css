@@ -98,6 +98,13 @@ body {
   height: 1.8rem;
 }
 
+.forecast {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .week-weather {
   display: flex;
   gap: 0.5rem;
