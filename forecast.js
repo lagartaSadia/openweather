@@ -3,6 +3,7 @@ const API_KEY_GIPHY = "X5BgOScTCzcvxmj68huYhrP7jwGurgb6";
 const searchButton = document.getElementById("search-button");
 
 window.addEventListener("onload", getGif("cat city"));
+window.addEventListener("onload", populateSection());
 
 searchButton.addEventListener("click", () => {
   const cityName = document.getElementById("search-box").value.toUpperCase();
@@ -21,7 +22,9 @@ function forecast(cityName) {
       if (data.cod == "404") alert(data.message);
       else {
         console.log(data);
-        getGif(data["weather"][0]["main"], data["name"]);
+        const weatherDescription = data["weather"][0]["main"];
+        const cityName = data["name"];
+        getGif(weatherDescription, cityName);
       }
     })
     .catch((err) => {
@@ -37,6 +40,7 @@ function getGif(weatherDescription, cityName = "Cat Town") {
       return res.json();
     })
     .then((gif) => {
+      gif = gif["data"]["images"]["original"]["url"];
       populateArticle(weatherDescription, gif, cityName);
     })
     .catch((err) => {
@@ -51,8 +55,27 @@ function populateArticle(weatherDescription, gif, cityName) {
         What's the weather right now in <span id="city-name">${cityName}</span>
       </h1>
       <p>${weatherDescription.toUpperCase()}</p>
-      <img src="${gif["data"]["images"]["original"]["url"]}" alt="${
-    gif["data"]["images"]["original"]["url"]
-  }">
+      <img src="${gif}" alt="${weatherDescription}">
+  `;
+}
+
+function populateSection(temp = 32, humid = 18, flTemp = 32) {
+  const section = document.querySelector("section");
+  section.innerHTML = `
+  <h2>Weather Info</h2>
+  <div>
+    <div class="card">
+      <div class="weather-info">Temperature</div>
+      <div id="wheater-temp">${temp}<span>&deg;</span></div>
+    </div>
+    <div class="card">
+      <div class="weather-info">Humidity</div>
+      <div id="wheater-humid">${humid}<span>%</span></div>
+    </div>
+    <div class="card">
+      <div class="weather-info">Fells Like</div>
+      <div id="wheater-fl-temp">${flTemp}<span>&deg;</span></div>
+    </div>
+    </div>
   `;
 }
