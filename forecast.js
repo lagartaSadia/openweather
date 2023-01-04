@@ -24,7 +24,12 @@ function forecast(cityName) {
         console.log(data);
         const weatherDescription = data["weather"][0]["main"];
         const cityName = data["name"];
+
+        const temp = Math.round(Number(data["main"]["temp"]));
+        const humid = data["main"]["humidity"];
+        const flTemp = Math.round(Number(data["main"]["feels_like"]));
         getGif(weatherDescription, cityName);
+        populateSection(temp, humid, flTemp);
       }
     })
     .catch((err) => {
@@ -76,6 +81,6 @@ function populateSection(temp = 32, humid = 18, flTemp = 32) {
       <div class="weather-info">Fells Like</div>
       <div id="wheater-fl-temp">${flTemp}<span>&deg;</span></div>
     </div>
-    </div>
+  </div>
   `;
 }
