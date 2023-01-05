@@ -6,138 +6,47 @@
 
 body {
   margin: 0;
-  background: linear-gradient(
-      rgba(247, 227, 223, 0.192),
-      rgba(80, 40, 30, 0.6),
-      rgba(29, 7, 1, 0.6)
-    ),
-    url(./forrest-background.jpg);
-  background-size: cover;
-  background-repeat: no-repeat;
   height: 100vh;
   font-family: sans-serif;
-}
-
-#header {
+  width: 100vw;
   display: flex;
-  align-items: center;
-  background-color: rgba(248, 246, 246, 0.459);
-}
-
-.header-left {
-  display: flex;
-  width: 65%;
-  margin: 1rem;
-  padding: 0.5rem;
-  align-items: center;
   justify-content: center;
+  background-color: hsl(0, 0%, 90%);
 }
 
-.weather-icon {
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
+.search-area {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
 }
 
-.weather-icon.large {
-  width: 80px;
-  height: 80px;
+article,
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-.weather-current-temp {
-  font-size: 2rem;
-  margin-left: 1rem;
+article > img {
+  width: 100%;
 }
 
-.header-right {
-  display: grid;
-  width: 35%;
-  grid-template-columns: repeat(3, auto);
-  grid-template-rows: repeat(2, auto);
+section > div {
+  display: flex;
   gap: 10px;
 }
 
-.info-group {
+.card {
   display: flex;
   flex-direction: column;
-  align-items: center;
-}
-
-.label {
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
-.value-sub-info {
-  font-weight: lighter;
-}
-
-.search {
-  margin: 30px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-}
-
-#city-name {
-  font-size: 1.5rem;
-  border: 1px solid rgb(17, 10, 9);
-  border-radius: 5px;
-}
-
-#search-button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid rgb(17, 10, 9);
-  border-radius: 5px;
-}
-
-#search-button > img {
-  height: 1.8rem;
-}
-
-.forecast {
-  display: flex;
-  flex-direction: column;
+  gap: 10px;
   justify-content: center;
   align-items: center;
 }
 
-.week-weather {
-  display: flex;
-  gap: 0.5rem;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.card-weather {
-  background-color: rgba(248, 246, 246, 0.459);
-  padding: 0.5rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 130px;
-}
-
-.card-weather > .weather-icon {
-  text-align: center;
-  margin-top: 15px;
-}
-
-.card-info {
-  display: grid;
-  grid-template-rows: repeat(2, auto);
-  justify-items: center;
-}
-
-.card-info > * {
-  margin: 5px;
-}
-
-.card-day {
-  margin-top: 15px;
-  font-weight: bold;
+.card > :nth-child(2) {
+  font-size: 2rem;
 }

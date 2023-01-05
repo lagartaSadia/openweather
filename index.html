@@ -6,129 +6,17 @@
     <title>Forecast</title>
   </head>
   <body>
-    <header id="header">
-      <div class="header-left">
-        <img
-          src="./icons/sun.svg"
-          alt="clout bolt"
-          class="weather-icon large"
-          data-current-icon
-        />
-        <div class="weather-current-temp">
-          <span data-current-temp>32</span>&deg;
-        </div>
+    <main>
+      <div class="search-area">
+        <label for="search-box"
+          >City Name: <input type="text" name="search-box" id="search-box"
+        /></label>
+        <button type="submit" id="search-button">Search</button>
       </div>
-      <div class="header-right">
-        <div class="info-group">
-          <div class="label">high</div>
-          <div class="value-sub-info">
-            <span data-curren-high>34</span>&deg;
-          </div>
-        </div>
-        <div class="info-group">
-          <div class="label">fl high</div>
-          <div class="value-sub-info">
-            <span data-curren-fl-high>28</span>&deg;
-          </div>
-        </div>
-        <div class="info-group">
-          <div class="label">wind</div>
-          <div class="value-sub-info"><span data-curren-wind>12</span>km</div>
-        </div>
-        <div class="info-group">
-          <div class="label">low</div>
-          <div class="value-sub-info"><span data-curren-low>24</span>&deg;</div>
-        </div>
-        <div class="info-group">
-          <div class="label">fl low</div>
-          <div class="value-sub-info">
-            <span data-curren-fl-low>20</span>&deg;
-          </div>
-        </div>
-        <div class="info-group">
-          <div class="label">precip</div>
-          <div class="value-sub-info">
-            <span data-curren-precip>0.2</span>cm
-          </div>
-        </div>
-      </div>
-    </header>
-    <aside class="search">
-      <input
-        type="text"
-        id="city-name"
-        aria-label="Input city name here to search"
-        placeholder="City name, Country code"
-      />
-      <button type="submit" id="search-button" aria-label="Submit button">
-        <img src="./icons/search.svg" alt="Search icon button" />
-      </button>
-    </aside>
-
-    <main class="forecast">
-      <h2 class="city">London</h2>
-      <div class="week-weather">
-        <div class="card-weather">
-          <img class="weather-icon" src="./icons/sun.svg" />
-          <div class="card-info">
-            <p class="card-day">Monday</p>
-            <p class="card-temp">25&deg;</p>
-          </div>
-        </div>
-        <div class="card-weather">
-          <img class="weather-icon" src="./icons/sun.svg" />
-          <div class="card-info">
-            <p class="card-day">Thusday</p>
-            <p class="card-temp">25&deg;</p>
-          </div>
-        </div>
-        <div class="card-weather">
-          <img class="weather-icon" src="./icons/sun.svg" />
-          <div class="card-info">
-            <p class="card-day">Wednesday</p>
-            <p class="card-temp">25&deg;</p>
-          </div>
-        </div>
-        <div class="card-weather">
-          <img class="weather-icon" src="./icons/sun.svg" />
-          <div class="card-info">
-            <p class="card-day">Thursday</p>
-            <p class="card-temp">25&deg;</p>
-          </div>
-        </div>
-        <div class="card-weather">
-          <img class="weather-icon" src="./icons/sun.svg" />
-          <div class="card-info">
-            <p class="card-day">Friday</p>
-            <p class="card-temp">25&deg;</p>
-          </div>
-        </div>
-        <div class="card-weather">
-          <img class="weather-icon" src="./icons/sun.svg" />
-          <div class="card-info">
-            <p class="card-day">Saturday</p>
-            <p class="card-temp">25&deg;</p>
-          </div>
-        </div>
-        <div class="card-weather">
-          <img class="weather-icon" src="./icons/sun.svg" />
-          <div class="card-info">
-            <p class="card-day">Sunday</p>
-            <p class="card-temp">25&deg;</p>
-          </div>
-        </div>
-      </div>
+      <article></article>
+      <section></section>
     </main>
 
-    <template>
-      <div class="card-weather">
-        <img class="weather-icon" src="./icons/sun.svg" />
-        <div class="card-info">
-          <p class="card-day" data-day></p>
-          <p class="card-temp"><span data-day-temp></span>&deg;</p>
-        </div>
-      </div>
-    </template>
     <script type="module" src="/main.js"></script>
   </body>
 </html>

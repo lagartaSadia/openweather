@@ -1,26 +1,35 @@
-const API_KEY = "a698168853c8d391d9f68e0e0b8f5b58";
+const API_KEY_FORECAST = "a698168853c8d391d9f68e0e0b8f5b58";
+const API_KEY_GIPHY = "X5BgOScTCzcvxmj68huYhrP7jwGurgb6";
 const searchButton = document.getElementById("search-button");
 
-searchButton.addEventListener("click", () => {
-  let userEntry = document.getElementById("city-name");
-  const data = userEntry.value.toUpperCase().split(", ");
+window.addEventListener("onload", getGif("cat city"));
+window.addEventListener("onload", populateSection());
 
-  forecast(data[0], data[1]);
-  userEntry.value = "";
+searchButton.addEventListener("click", () => {
+  const cityName = document.getElementById("search-box").value.toUpperCase();
+
+  forecast(cityName);
 });
 
-function forecast(cityName, country) {
+function forecast(cityName) {
   fetch(
-    `https://api.openweathermap.org/data/2.5/forecast?q=${cityName},${country}&units=metric&appid=${API_KEY}`
+    `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=metric&appid=${API_KEY_FORECAST}`
   )
     .then((res) => {
       return res.json();
     })
-    .then((weather) => {
-      if (weather.cod == "404") alert(weather.message);
+    .then((data) => {
+      if (data.cod == "404") alert(data.message);
       else {
-        console.log(weather);
-        populateTemplate(weather);
+        console.log(data);
+        const weatherDescription = data["weather"][0]["main"];
+        const cityName = data["name"];
+
+        const temp = Math.round(Number(data["main"]["temp"]));
+        const humid = data["main"]["humidity"];
+        const flTemp = Math.round(Number(data["main"]["feels_like"]));
+        getGif(weatherDescription, cityName);
+        populateSection(temp, humid, flTemp);
       }
     })
     .catch((err) => {
@@ -28,15 +37,50 @@ function forecast(cityName, country) {
     });
 }
 
-function populateTemplate(weather) {
-  const weekWeather = document.querySelector(".week-weather");
+function getGif(weatherDescription, cityName = "Cat Town") {
+  fetch(
+    `https://api.giphy.com/v1/gifs/translate?s=${weatherDescription}&api_key=${API_KEY_GIPHY}`
+  )
+    .then((res) => {
+      return res.json();
+    })
+    .then((gif) => {
+      gif = gif["data"]["images"]["original"]["url"];
+      populateArticle(weatherDescription, gif, cityName);
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+}
 
-  const template = document.getElementsByTagName("template");
-  const cardDay = document.querySelector("[data-day]");
-  const cardDayTemp = document.querySelector("[data-day-temp]");
+function populateArticle(weatherDescription, gif, cityName) {
+  const article = document.querySelector("article");
+  article.innerHTML = `
+      <h1>
+        What's the weather right now in <span id="city-name">${cityName}</span>
+      </h1>
+      <p>${weatherDescription.toUpperCase()}</p>
+      <img src="${gif}" alt="${weatherDescription}">
+  `;
+}
 
-  const day = weather["list"][0]["dt-txt"];
-  console.log(
-    new Intl.DateTimeFormat("en-US", { weekday: "long" }).format(day)
-  );
+function populateSection(temp = 32, humid = 18, flTemp = 32) {
+  const section = document.querySelector("section");
+  section.innerHTML = `
+  <h2>Weather Info</h2>
+  <div>
+    <div class="card">
+      <div class="weather-info">Temperature</div>
+      <div id="wheater-temp">${temp}<span>&deg;</span></div>
+    </div>
+    <div class="card">
+      <div class="weather-info">Humidity</div>
+      <div id="wheater-humid">${humid}<span>%</span></div>
+    </div>
+    <div class="card">
+      <div class="weather-info">Fells Like</div>
+      <div id="wheater-fl-temp">${flTemp}<span>&deg;</span></div>
+    </div>
+  </div>
+  `;
 }
