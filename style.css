@@ -8,4 +8,45 @@ body {
   margin: 0;
   height: 100vh;
   font-family: sans-serif;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  background-color: hsl(0, 0%, 90%);
+}
+
+.search-area {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+
+article,
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+article > img {
+  width: 100%;
+}
+
+section > div {
+  display: flex;
+  gap: 10px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+}
+
+.card > :nth-child(2) {
+  font-size: 2rem;
 }
