@@ -1,5 +1,3 @@
-const API_KEY_FORECAST = "a698168853c8d391d9f68e0e0b8f5b58";
-const API_KEY_GIPHY = "X5BgOScTCzcvxmj68huYhrP7jwGurgb6";
 const searchButton = document.getElementById("search-button");
 
 window.addEventListener("onload", getGif("cat city"));
